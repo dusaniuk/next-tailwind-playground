@@ -4,7 +4,7 @@ import React from "react";
 export default function PrivacyPolicyPage() {
   return (
     <main className="pt-20 px-8">
-      <H1 center>Privacy Policy</H1>
+      <H1 className="text-center">Privacy Policy</H1>
       <div className="mt-4 flex flex-col gap-y-2">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam

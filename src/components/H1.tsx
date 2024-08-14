@@ -1,18 +1,16 @@
 import { PropsWithChildren } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 export type H1Props = PropsWithChildren<{
-  center?: boolean;
+  className?: string;
 }>;
 
 export function H1(props: H1Props) {
-  const { center, children } = props;
+  const { className, children } = props;
 
   return (
     <h1
-      className={clsx("text-4xl md:text-5xl font-bold tracking-tight", {
-        "text-center": center,
-      })}
+      className={cn("text-4xl md:text-5xl font-bold tracking-tight", className)}
     >
       {children}
     </h1>
