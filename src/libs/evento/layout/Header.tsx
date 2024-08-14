@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { Logo } from "./Logo";
-import { usePathname } from "next/navigation";
+import { cn } from "@/libs/utils";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Logo } from "./Logo";
 
 const routes = [
   { href: "/", label: "Home" },

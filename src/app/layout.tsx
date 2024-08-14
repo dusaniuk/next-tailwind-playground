@@ -1,5 +1,5 @@
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Footer } from "@/libs/evento/layout/Footer";
+import { Header } from "@/libs/evento/layout/Header";
 import { Container } from "@/libs/ui/components/Container";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
