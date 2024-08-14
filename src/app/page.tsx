@@ -1,4 +1,4 @@
-import { SearchForm } from "@/components/SearchForm";
+import { SearchForm } from "@/libs/evento/events/SearchForm";
 import { H1 } from "@/libs/ui/components/H1";
 import Link from "next/link";
 

@@ -1,4 +1,4 @@
-import { EventsList } from "@/components/EventsList";
+import { EventsList } from "@/libs/evento/events/EventsList";
 import { EventoEvent } from "@/libs/types";
 import { H1 } from "@/libs/ui/components/H1";
 
