@@ -13,7 +13,7 @@ export default async function EventPage(props: EventPageProps) {
   const { city } = params;
 
   const response = await fetch(
-    "https://bytegrad.com/course-assets/projects/evento/api/events?city=austin"
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
   );
 
   const events: EventoEvent[] = await response.json();

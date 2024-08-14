@@ -14,11 +14,11 @@ export function EventCard(props: EventCardProps) {
 
   return (
     <Link
-      className="relative flex flex-col flex-1 rounded-xl overflow-hidden bg-white/[3%] basis-80 h-[23.75rem] max-w-[31.25rem] hover:scale-105 active:scale-[1.02] transition-transform"
+      className="relative flex flex-col flex-1 rounded-xl overflow-hidden bg-white/[3%] basis-80 h-[23.75rem] max-w-[31.25rem] state-active"
       href={`/event/${event.slug}`}
     >
       <Image
-        className="h-[60%] object-fit"
+        className="h-[60%] object-cover"
         src={event.imageUrl}
         alt={event.name}
         height={280}

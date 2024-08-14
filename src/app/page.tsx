@@ -20,7 +20,7 @@ export default function Home() {
         <p>Popular:</p>
         <div className="space-x-2 font-semibold">
           <Link href={"/events/austin"}>Austin</Link>
-          <Link href={"/events/vinnytsia"}>Vinnytsia</Link>
+          <Link href={"/events/seattle"}>Seattle</Link>
         </div>
       </section>
     </main>
