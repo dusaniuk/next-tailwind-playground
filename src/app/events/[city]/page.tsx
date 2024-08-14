@@ -1,6 +1,6 @@
 import { EventsList } from "@/components/EventsList";
-import { H1 } from "@/components/H1";
 import { EventoEvent } from "@/libs/types";
+import { H1 } from "@/libs/ui/components/H1";
 
 export type EventPageProps = {
   params: {

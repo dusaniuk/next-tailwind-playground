@@ -1,5 +1,4 @@
-import { H1 } from "@/components/H1";
-import React from "react";
+import { H1 } from "@/libs/ui/components/H1";
 
 export default function PrivacyPolicyPage() {
   return (

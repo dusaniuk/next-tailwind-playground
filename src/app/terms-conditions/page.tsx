@@ -1,4 +1,4 @@
-import { H1 } from "@/components/H1";
+import { H1 } from "@/libs/ui/components/H1";
 import React from "react";
 
 export default function TermsConditionsPage() {
