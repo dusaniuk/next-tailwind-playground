@@ -1,4 +1,4 @@
-import { EventoEvent } from "@/lib/types";
+import { EventoEvent } from "@/libs/types";
 import Image from "next/image";
 import Link from "next/link";
 

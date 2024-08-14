@@ -1,4 +1,4 @@
-import { EventoEvent } from "@/lib/types";
+import { EventoEvent } from "@/libs/types";
 import { EventCard } from "./EventCard";
 
 export interface EventsListProps {
