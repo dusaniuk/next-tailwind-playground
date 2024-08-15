@@ -1,5 +1,5 @@
 import { EventContentSection } from "@/libs/evento/events/EventContentSection";
-import { EventoEvent } from "@/libs/types";
+import { fetchEvent } from "@/libs/evento/events/fetchEvent";
 import { H1 } from "@/libs/ui/components/H1";
 import Image from "next/image";
 
@@ -13,11 +13,7 @@ export default async function EventPage(props: EventPageProps) {
   const { params } = props;
   const { slug } = params;
 
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
-
-  const event: EventoEvent = await response.json();
+  const event = await fetchEvent(slug);
   const eventDate = new Date(event.date);
 
   return (
