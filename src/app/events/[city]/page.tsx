@@ -4,12 +4,25 @@ import {
 } from "@/libs/evento/events/EventsList";
 import { H1 } from "@/libs/ui/components/H1";
 import { Suspense } from "react";
+import { Metadata } from "next";
+import { capitalize } from "@/libs/utils";
 
 export type EventPageProps = {
   params: {
     city: string;
   };
 };
+
+export function generateMetadata(props: EventPageProps): Metadata {
+  const { params } = props;
+  const { city } = params;
+
+  return {
+    title: `EVENTO | Events in ${
+      city === "all" ? "All Cities" : capitalize(city)
+    }`,
+  };
+}
 
 export default async function EventPage(props: EventPageProps) {
   const { params } = props;
