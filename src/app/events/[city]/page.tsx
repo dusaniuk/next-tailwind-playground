@@ -3,32 +3,12 @@ import {
   EventsListSkeleton,
 } from "@/libs/evento/events/EventsList";
 import { H1 } from "@/libs/ui/components/H1";
-import { Suspense } from "react";
-import { Metadata } from "next";
 import { capitalize, SearchParams } from "@/libs/utils";
+import { Metadata } from "next";
+import { Suspense } from "react";
+import { z } from "zod";
 
-function getCurrentPageFromSearchParams(params: SearchParams) {
-  const pageParam = params?.page;
-  if (!pageParam) {
-    return 1;
-  }
-
-  if (typeof pageParam !== "string") {
-    return 1;
-  }
-
-  const page = parseInt(pageParam);
-
-  if (isNaN(page)) {
-    return 1;
-  }
-
-  if (page < 1) {
-    return 1;
-  }
-
-  return page;
-}
+const pageNumberSchema = z.coerce.number().int().positive().optional();
 
 export type EventPageProps = {
   params: {
@@ -52,7 +32,11 @@ export default async function EventPage(props: EventPageProps) {
   const { params, searchParams } = props;
   const { city } = params;
 
-  const currentPage = getCurrentPageFromSearchParams(searchParams);
+  const currentPage = pageNumberSchema.safeParse(searchParams?.page);
+
+  if (!currentPage.success) {
+    throw new Error("Invalid page number");
+  }
 
   return (
     <main className="flex flex-col items-center py-24 px-[1.25rem] min-h-[110vh]">
@@ -65,8 +49,11 @@ export default async function EventPage(props: EventPageProps) {
           </>
         )}
       </H1>
-      <Suspense key={city + currentPage} fallback={<EventsListSkeleton />}>
-        <EventsList city={city} page={currentPage} />
+      <Suspense
+        key={city + currentPage.data ?? 1}
+        fallback={<EventsListSkeleton />}
+      >
+        <EventsList city={city} page={currentPage.data} />
       </Suspense>
     </main>
   );

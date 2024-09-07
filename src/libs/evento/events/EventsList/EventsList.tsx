@@ -4,11 +4,11 @@ import { fetchEventsForCity } from "../fetchEventsForCity";
 
 export interface EventsListProps {
   city: string;
-  page: number;
+  page?: number;
 }
 
 export async function EventsList(props: EventsListProps) {
-  const { city, page } = props;
+  const { city, page = 1 } = props;
 
   const { events, hasNextPage, hasPreviousPage } = await fetchEventsForCity(
     city,
