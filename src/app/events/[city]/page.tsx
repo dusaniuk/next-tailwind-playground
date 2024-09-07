@@ -5,12 +5,36 @@ import {
 import { H1 } from "@/libs/ui/components/H1";
 import { Suspense } from "react";
 import { Metadata } from "next";
-import { capitalize } from "@/libs/utils";
+import { capitalize, SearchParams } from "@/libs/utils";
+
+function getCurrentPageFromSearchParams(params: SearchParams) {
+  const pageParam = params?.page;
+  if (!pageParam) {
+    return 1;
+  }
+
+  if (typeof pageParam !== "string") {
+    return 1;
+  }
+
+  const page = parseInt(pageParam);
+
+  if (isNaN(page)) {
+    return 1;
+  }
+
+  if (page < 1) {
+    return 1;
+  }
+
+  return page;
+}
 
 export type EventPageProps = {
   params: {
     city: string;
   };
+  searchParams: SearchParams;
 };
 
 export function generateMetadata(props: EventPageProps): Metadata {
@@ -25,8 +49,10 @@ export function generateMetadata(props: EventPageProps): Metadata {
 }
 
 export default async function EventPage(props: EventPageProps) {
-  const { params } = props;
+  const { params, searchParams } = props;
   const { city } = params;
+
+  const currentPage = getCurrentPageFromSearchParams(searchParams);
 
   return (
     <main className="flex flex-col items-center py-24 px-[1.25rem] min-h-[110vh]">
@@ -39,8 +65,8 @@ export default async function EventPage(props: EventPageProps) {
           </>
         )}
       </H1>
-      <Suspense fallback={<EventsListSkeleton />}>
-        <EventsList city={city} />
+      <Suspense key={city + currentPage} fallback={<EventsListSkeleton />}>
+        <EventsList city={city} page={currentPage} />
       </Suspense>
     </main>
   );
