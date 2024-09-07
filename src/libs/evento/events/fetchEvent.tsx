@@ -1,9 +1,7 @@
-export async function fetchEvent(slug: string) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
+import { prisma } from "@/libs/db";
 
-  const event = await response.json();
-
-  return event;
+export function fetchEvent(slug: string) {
+  return prisma.eventoEvent.findUnique({
+    where: { slug },
+  });
 }

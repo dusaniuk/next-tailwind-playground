@@ -2,6 +2,7 @@ import { EventContentSection } from "@/libs/evento/events/EventContentSection";
 import { fetchEvent } from "@/libs/evento/events/fetchEvent";
 import { H1 } from "@/libs/ui/components/H1";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export type EventPageProps = {
   params: {
@@ -14,6 +15,11 @@ export default async function EventPage(props: EventPageProps) {
   const { slug } = params;
 
   const event = await fetchEvent(slug);
+
+  if (!event) {
+    return notFound();
+  }
+
   const eventDate = new Date(event.date);
 
   return (
